@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taneil Currie — Business & AI Automation Consultant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bone:    #f9f5f0;
+      --bone2:   #f0ebe3;
+      --ink:     #1a1220;
+      --plum:    #7848a8;
+      --plum2:   #5a3488;
+      --plum-lt: #e8d8f8;
+      --sand:    #e8c8a0;
+      --muted:   #9a8fa8;
+      --border:  rgba(26,18,32,0.10);
+      --border2: rgba(120,72,168,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bone);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ── CURSOR ── */
+    #cur {
+      position: fixed; width: 10px; height: 10px;
+      border-radius: 50%; background: var(--plum);
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: width .3s, height .3s, background .3s, opacity .3s;
+      mix-blend-mode: multiply;
+    }
+    #cur.hover { width: 36px; height: 36px; background: var(--plum-lt); }
+
+    /* ── GRAIN OVERLAY ── */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none; z-index: 1;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 56px;
+      background: rgba(249,245,240,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 400; letter-spacing: 0.04em;
+      color: var(--ink); text-decoration: none;
+    }
+    .logo em { font-style: italic; color: var(--plum); }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; font-weight: 400;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+      font-weight: 500; padding: 10px 24px;
+      background: var(--plum); color: #fff;
+      text-decoration: none; border-radius: 100px;
+      transition: background .25s, transform .2s;
+    }
+    .nav-cta:hover { background: var(--plum2); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 420px;
+      gap: 0; align-items: center;
+      padding: 120px 56px 80px;
+      position: relative; overflow: hidden; z-index: 2;
+    }
+
+    .hero-bg-shape {
+      position: absolute; top: -80px; right: -80px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,216,248,0.5) 0%, rgba(249,245,240,0) 70%);
+      pointer-events: none;
+    }
+    .hero-bg-line {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1px; background: var(--border);
+    }
+
+    .hero-left { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--plum); margin-bottom: 36px;
+      opacity: 0; animation: up .7s .1s forwards;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 28px; height: 1px; background: var(--plum);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 6.5vw, 100px);
+      font-weight: 300; line-height: 1.05;
+      color: var(--ink); max-width: 760px;
+      opacity: 0; animation: up .8s .25s forwards;
+    }
+    h1 em { font-style: italic; color: var(--plum); }
+
+    .hero-sub {
+      margin-top: 32px; max-width: 480px;
+      font-size: 17px; line-height: 1.8; color: var(--muted); font-weight: 300;
+      opacity: 0; animation: up .8s .4s forwards;
+    }
+
+    .hero-actions {
+      margin-top: 48px; display: flex; gap: 14px; align-items: center;
+      opacity: 0; animation: up .8s .55s forwards;
+    }
+    .btn-primary {
+      padding: 15px 36px; background: var(--plum); color: #fff;
+      font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+      font-weight: 500; text-decoration: none; border-radius: 100px;
+      transition: background .25s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--plum2); transform: translateY(-2px); }
+    .btn-secondary {
+      font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; font-weight: 400;
+      display: flex; align-items: center; gap: 7px;
+      transition: color .2s;
+    }
+    .btn-secondary:hover { color: var(--ink); }
+    .btn-secondary .arr { transition: transform .2s; display: inline-block; }
+    .btn-secondary:hover .arr { transform: translateX(4px); }
+
+    /* hero right — floating card stack */
+    .hero-right {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; gap: 12px;
+      opacity: 0; animation: up .8s .7s forwards;
+      padding-left: 40px;
+    }
+    .hero-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--plum);
+      padding: 20px 24px;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .hero-card:hover { transform: translateX(4px); box-shadow: -4px 4px 20px rgba(120,72,168,0.1); }
+    .hero-card-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--plum); margin-bottom: 6px;
+    }
+    .hero-card-text { font-size: 14px; color: var(--ink); font-weight: 400; line-height: 1.5; }
+
+    /* ── SECTION SHARED ── */
+    .section { padding: 120px 56px; position: relative; z-index: 2; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--plum); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-tag::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--plum); opacity: 0.4; }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4.5vw, 60px);
+      font-weight: 300; line-height: 1.1; color: var(--ink);
+    }
+    h2 em { font-style: italic; color: var(--plum); }
+
+    .lead {
+      font-size: 18px; line-height: 1.8; color: var(--muted);
+      font-weight: 300; max-width: 580px;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bone); border-top: 1px solid var(--border); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    .about-left h2 { margin-bottom: 28px; }
+    .about-body { font-size: 16px; line-height: 1.9; color: #6a5a78; }
+    .about-body p + p { margin-top: 18px; }
+    .about-body strong { color: var(--ink); font-weight: 500; }
+
+    .about-right { padding-top: 8px; }
+    .about-pull {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 300; font-style: italic;
+      line-height: 1.5; color: var(--ink);
+      border-left: 2px solid var(--plum);
+      padding-left: 28px; margin-bottom: 48px;
+    }
+    .cred-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .cred-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 14px; color: #6a5a78; line-height: 1.6;
+    }
+    .cred-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--plum); flex-shrink: 0; margin-top: 7px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--bone2); border-top: 1px solid var(--border); }
+    .services-intro {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: end; margin-bottom: 72px;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px;
+    }
+    .service {
+      background: var(--bone);
+      border: 1px solid var(--border);
+      padding: 44px 40px;
+      position: relative; overflow: hidden;
+      transition: border-color .3s, transform .3s;
+    }
+    .service::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--plum);
+      transform: scaleX(0); transform-origin: left; transition: transform .4s;
+    }
+    .service:hover { border-color: var(--border2); transform: translateY(-3px); }
+    .service:hover::before { transform: scaleX(1); }
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px; font-weight: 300; color: var(--plum-lt);
+      line-height: 1; margin-bottom: 16px;
+    }
+    .service h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 400; color: var(--ink);
+      margin-bottom: 14px; line-height: 1.2;
+    }
+    .service h3 em { font-style: italic; color: var(--plum); }
+    .service p { font-size: 14px; color: #6a5a78; line-height: 1.8; margin-bottom: 20px; }
+    .service-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .service-list li {
+      font-size: 13px; color: var(--muted);
+      display: flex; align-items: center; gap: 9px;
+    }
+    .service-list li::before {
+      content: '–'; color: var(--plum); font-weight: 400;
+    }
+
+    /* ── WHO ── */
+    #who { background: var(--bone); border-top: 1px solid var(--border); }
+    .who-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; margin-top: 60px;
+      background: var(--border);
+    }
+    .who-card {
+      background: var(--bone); padding: 44px 36px;
+      transition: background .3s;
+    }
+    .who-card:hover { background: #fff; }
+    .who-icon {
+      font-size: 28px; margin-bottom: 20px; display: block;
+    }
+    .who-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 400; color: var(--ink);
+      margin-bottom: 12px; line-height: 1.3;
+    }
+    .who-card p { font-size: 14px; color: #6a5a78; line-height: 1.8; }
+
+    /* ── HOW ── */
+    #how {
+      background: var(--ink); color: var(--bone);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    #how .section-tag { color: var(--sand); }
+    #how .section-tag::after { background: var(--sand); }
+    #how h2 { color: var(--bone); }
+    #how h2 em { color: var(--sand); }
+    .how-lead { font-size: 17px; line-height: 1.8; color: rgba(240,235,228,0.55); max-width: 520px; margin-bottom: 72px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .step {
+      padding: 48px 36px;
+      border: 1px solid rgba(255,255,255,0.07);
+      position: relative; overflow: hidden;
+      transition: border-color .3s, background .3s;
+    }
+    .step:hover { border-color: rgba(232,200,160,0.3); background: rgba(255,255,255,0.03); }
+    .step-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; letter-spacing: 0.2em; color: var(--sand);
+      margin-bottom: 28px; opacity: 0.7;
+    }
+    .step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px; font-weight: 400; color: var(--bone);
+      margin-bottom: 14px; line-height: 1.2;
+    }
+    .step p { font-size: 14px; color: rgba(240,235,228,0.5); line-height: 1.8; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bone2); border-top: 1px solid var(--border); }
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .contact-left h2 { margin-bottom: 24px; }
+    .contact-left p { font-size: 16px; color: #6a5a78; line-height: 1.9; margin-bottom: 40px; }
+    .contact-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .c-btn {
+      padding: 15px 36px; background: var(--plum); color: #fff;
+      font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+      font-weight: 500; text-decoration: none; border-radius: 100px;
+      transition: background .25s, transform .2s;
+    }
+    .c-btn:hover { background: var(--plum2); transform: translateY(-2px); }
+    .c-btn-outline {
+      padding: 15px 36px;
+      border: 1px solid var(--border2); color: var(--plum);
+      font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+      font-weight: 500; text-decoration: none; border-radius: 100px;
+      transition: background .25s, color .25s;
+    }
+    .c-btn-outline:hover { background: var(--plum-lt); }
+
+    .contact-right {
+      background: var(--bone);
+      border: 1px solid var(--border);
+      padding: 48px 44px;
+    }
+    .contact-right h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 400; font-style: italic;
+      color: var(--ink); margin-bottom: 28px;
+    }
+    .contact-items { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 14px; }
+    .contact-item-icon {
+      font-size: 18px; flex-shrink: 0; margin-top: 2px;
+    }
+    .contact-item-text { font-size: 14px; color: #6a5a78; line-height: 1.7; }
+    .contact-item-text strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 2px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink); color: rgba(249,245,240,0.4);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 24px 56px;
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      font-family: 'DM Mono', monospace;
+      position: relative; z-index: 2;
+    }
+    footer a { color: var(--sand); text-decoration: none; }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .reveal.on { opacity: 1; transform: translateY(0); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes up {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; }
+      .nav-links { display: none; }
+      #hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
+      .hero-right { padding-left: 0; margin-top: 48px; }
+      .section { padding: 80px 24px; }
+      .about-grid, .services-intro, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid, .steps { grid-template-columns: 1fr; }
+      .who-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 10px; padding: 24px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="cur"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Taneil <em>Currie</em></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://app.reclaim.ai/m/taneil-currie/quick-meeting" target="_blank" class="nav-cta">Book a Call</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-bg-line"></div>
+
+  <div class="hero-left">
+    <p class="hero-eyebrow">Business & AI Automation Consultant</p>
+    <h1>Think clearly.<br>Grow <em>confidently.</em></h1>
+    <p class="hero-sub">
+      I help small businesses and startups untangle their operations, sharpen their strategy, and build smart AI systems so their teams can focus on the work that actually matters.
+    </p>
+    <div class="hero-actions">
+      <a href="https://app.reclaim.ai/m/taneil-currie/quick-meeting" target="_blank" class="btn-primary">Book a Consultation</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-label">Strategy</div>
+      <div class="hero-card-text">Clearer direction, smarter decisions, and a plan your team can actually execute.</div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">Process Improvement</div>
+      <div class="hero-card-text">Find the friction, fix the workflows, get your time back.</div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">AI Automation</div>
+      <div class="hero-card-text">Practical AI systems built for how your business actually runs.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <div class="section-tag">About</div>
+        <h2>I've been where<br>you <em>are.</em></h2>
+        <div class="about-body" style="margin-top:28px">
+          <p>I'm Taneil Currie, a business consultant, growth marketer, and entrepreneur with over two decades of experience helping businesses work better. I've built and sold two companies, led marketing at a SaaS startup, and consulted for founders across multiple industries.</p>
+          <p>What I kept seeing, over and over, was the same problem: <strong>brilliant people stuck in broken systems.</strong> Too much time on the wrong things. Growth stalling not because the idea was bad, but because the operations couldn't keep up.</p>
+          <p>That's exactly what I help fix. Whether it's tightening up your strategy, overhauling messy workflows, or building AI automations that take the grunt work off your plate, I bring a grounded, practical approach that gets results without overcomplicating things.</p>
+        </div>
+      </div>
+      <div class="about-right reveal" style="transition-delay:.15s">
+        <p class="about-pull">"The right strategy creates momentum. The right systems create capacity. Together, they create a business that actually works."</p>
+        <ul class="cred-list">
+          <li class="cred-item"><div class="cred-dot"></div><span>Built and sold two companies, with firsthand experience of what it takes to grow something from the inside out</span></li>
+          <li class="cred-item"><div class="cred-dot"></div><span>20+ years across SaaS, ecommerce and luxury brand marketing</span></li>
+          <li class="cred-item"><div class="cred-dot"></div><span>Member, Forbes Agency Council, recognized voice in marketing and entrepreneurship</span></li>
+          <li class="cred-item"><div class="cred-dot"></div><span>Consulted for founders from early-stage startups to established enterprise brands</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="section-inner">
+    <div class="services-intro reveal">
+      <div>
+        <div class="section-tag">What I Do</div>
+        <h2>Support that moves<br>the <em>needle.</em></h2>
+      </div>
+      <p class="lead">Every business is different. But the problems that slow them down tend to look a lot alike. Here's where I focus.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service reveal">
+        <div class="service-num">01</div>
+        <h3>Business <em>Strategy</em></h3>
+        <p>When growth brings noise, I help you cut through it. Together we clarify your priorities, identify what's actually worth pursuing, and build a direction your whole team can get behind.</p>
+        <ul class="service-list">
+          <li>Priorities & direction setting</li>
+          <li>Offer and service refinement</li>
+          <li>Opportunity identification</li>
+          <li>Decision-making frameworks</li>
+        </ul>
+      </div>
+      <div class="service reveal" style="transition-delay:.1s">
+        <div class="service-num">02</div>
+        <h3>Process <em>Improvement</em></h3>
+        <p>Most businesses don't have a people problem. They have a process problem. I find where things are breaking down and build smoother, more consistent ways of working.</p>
+        <ul class="service-list">
+          <li>Workflow reviews & redesign</li>
+          <li>Bottleneck identification</li>
+          <li>Team handoff improvements</li>
+          <li>Operational efficiency</li>
+        </ul>
+      </div>
+      <div class="service reveal" style="transition-delay:.15s">
+        <div class="service-num">03</div>
+        <h3>AI <em>Automation</em></h3>
+        <p>AI is powerful when it's purposeful. I design and build practical automations that reduce manual work, improve consistency, and free your team up for the things that actually need them.</p>
+        <ul class="service-list">
+          <li>Custom AI agent workflows</li>
+          <li>Lead & follow-up automations</li>
+          <li>Content & reporting pipelines</li>
+          <li>Operations across key platforms</li>
+        </ul>
+      </div>
+      <div class="service reveal" style="transition-delay:.2s">
+        <div class="service-num">04</div>
+        <h3>Fractional <em>Advisor</em></h3>
+        <p>Sometimes you need more than a one-time engagement. I work with select clients on an ongoing basis as a trusted thought partner, thinking through decisions, solving problems, and keeping things sharp.</p>
+        <ul class="service-list">
+          <li>Recurring strategy sessions</li>
+          <li>Continuous process refinement</li>
+          <li>Implementation support</li>
+          <li>Priority guidance as you grow</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section id="who" class="section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Who I Work With</div>
+      <h2>Built for businesses<br><em>ready to grow.</em></h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card reveal">
+        <span class="who-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </span>
+        <h3>Small & Mid-Size Businesses</h3>
+        <p>You're running lean and every hour matters. I help you stop doing the work that doesn't need you, and put better systems in place so the rest runs smoother.</p>
+      </div>
+      <div class="who-card reveal" style="transition-delay:.1s">
+        <span class="who-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </span>
+        <h3>Startups Moving Fast</h3>
+        <p>Growth is exciting until the cracks start showing. I help early-stage teams build the strategy and systems to scale without everything falling apart.</p>
+      </div>
+      <div class="who-card reveal" style="transition-delay:.2s">
+        <span class="who-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </span>
+        <h3>Marketing Teams</h3>
+        <p>You've got great ideas but too much manual work eating your time. I build AI-powered workflows that handle the busywork so your team can stay focused and creative.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="contact-left reveal">
+        <div class="section-tag">Get in Touch</div>
+        <h2>Let's talk about<br>your <em>business.</em></h2>
+        <p>Tell me what's going on, where you're stuck, what you're trying to build, or what's eating your team's time. We'll figure out together whether I'm the right person to help.</p>
+        <div class="contact-btns">
+          <a href="mailto:taneilcurrie@gmail.com" class="c-btn">Send a Message</a>
+          <a href="https://www.linkedin.com/in/taneilcurrie" target="_blank" class="c-btn-outline">LinkedIn</a>
+        </div>
+      </div>
+      <div class="contact-right reveal" style="transition-delay:.15s">
+        <h3>What to expect</h3>
+        <div class="contact-items">
+          <div class="contact-item">
+            <span class="contact-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <div class="contact-item-text">
+              <strong>A real conversation first</strong>
+              Every engagement starts with a genuine chat about your business. No hard sell, no pressure.
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            </span>
+            <div class="contact-item-text">
+              <strong>Tailored to where you are</strong>
+              Whether you need a focused project or ongoing support, we'll find the right shape for working together.
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <div class="contact-item-text">
+              <strong>Practical from day one</strong>
+              You'll leave every conversation with something useful. A clearer direction, a decision made, a next step defined.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Taneil Currie</span>
+  <a href="https://linkedin.com/in/taneilcurrie" target="_blank">LinkedIn ↗</a>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Cursor
+const cur = document.getElementById('cur');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top  = e.clientY + 'px';
+});
+document.querySelectorAll('a, button, .service, .who-card, .step, .hero-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('hover'));
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
