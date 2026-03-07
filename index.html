@@ -413,6 +413,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="https://resources.taneilcurrie.com" target="_blank">AI Resources</a></li>
   </ul>
   <a href="https://app.reclaim.ai/m/taneil-currie/quick-meeting" target="_blank" class="nav-cta">Book a Call</a>
 </nav>
@@ -621,11 +622,11 @@
 <!-- FOOTER -->
 <footer>
   <span>© 2026 Taneil Currie</span>
+  <a href="https://resources.taneilcurrie.com" target="_blank">AI Resources ↗</a>
   <a href="https://linkedin.com/in/taneilcurrie" target="_blank">LinkedIn ↗</a>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Cursor
+<script>
 const cur = document.getElementById('cur');
 document.addEventListener('mousemove', e => {
   cur.style.left = e.clientX + 'px';
@@ -635,8 +636,6 @@ document.querySelectorAll('a, button, .service, .who-card, .step, .hero-card').f
   el.addEventListener('mouseenter', () => cur.classList.add('hover'));
   el.addEventListener('mouseleave', () => cur.classList.remove('hover'));
 });
-
-// Scroll reveal
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
 }, { threshold: 0.1 });
