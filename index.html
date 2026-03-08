@@ -665,6 +665,74 @@ footer {
   #contact { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
   footer { padding: 24px; flex-direction: column; gap: 16px; text-align: center; }
 }
+
+/* ── HAMBURGER MENU ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 61px;
+  left: 0;
+  right: 0;
+  background: var(--black2);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  z-index: 99;
+  flex-direction: column;
+  padding: 24px 24px 32px;
+  gap: 0;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey);
+  text-decoration: none;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: color 0.2s;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: var(--white); }
+.mobile-menu a.lav { color: var(--lav); }
+.mobile-menu .mob-cta {
+  margin-top: 20px;
+  padding: 14px 28px;
+  background: var(--lav);
+  color: var(--black);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 100px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .hamburger { display: flex; }
+  .nav-links { display: none; }
+  .nav-right { display: none; }
+}
 </style>
 </head>
 <body>
@@ -682,7 +750,18 @@ footer {
   <div class="nav-right">
     <a href="https://app.reclaim.ai/m/taneil-currie/quick-meeting" target="_blank" class="nav-cta">Book a Call</a>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#contact">Contact</a>
+  <a href="https://resources.taneilcurrie.com" target="_blank" class="lav">AI Resources</a>
+  <a href="https://app.reclaim.ai/m/taneil-currie/quick-meeting" target="_blank" class="mob-cta">Book a Call</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -834,7 +913,7 @@ footer {
     </p>
     <div class="contact-btns reveal reveal-delay-3">
       <a href="https://app.reclaim.ai/m/taneil-currie/quick-meeting" target="_blank" class="btn-primary">Book a Call</a>
-      <a href="mailto:taneilcurrie@gmail.com" class="btn-outline">Send a Message</a>
+      <a href="https://resources.taneilcurrie.com" target="_blank" class="btn-outline">AI Resources</a>
       <a href="https://www.linkedin.com/in/taneilcurrie" target="_blank" class="btn-outline">LinkedIn</a>
     </div>
   </div>
@@ -866,6 +945,21 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Hamburger
+const ham = document.getElementById('hamburger');
+const mob = document.getElementById('mobile-menu');
+ham.addEventListener('click', () => {
+  ham.classList.toggle('open');
+  mob.classList.toggle('open');
+});
+// Close on link click
+mob.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    ham.classList.remove('open');
+    mob.classList.remove('open');
+  });
+});
 </script>
 </body>
 </html>
