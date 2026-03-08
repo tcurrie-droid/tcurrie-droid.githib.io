@@ -33,6 +33,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   cursor: none;
+  padding-top: 61px;
 }
 
 /* ── CURSOR ── */
@@ -135,15 +136,16 @@ section { position: relative; z-index: 2; }
 /* ── HERO ── */
 #hero {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  align-items: center;
 }
 
 .hero-left {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 140px 48px 80px 48px;
+  padding: 80px 48px;
+  max-width: 800px;
 }
 
 .hero-tag {
@@ -218,75 +220,19 @@ section { position: relative; z-index: 2; }
 .btn-ghost:hover { color: var(--white); }
 .btn-ghost::after { content: '↓'; }
 
-.hero-right {
-  background: var(--lav);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 140px 48px 80px;
-  position: relative;
-  overflow: hidden;
-}
 
-.hero-right::before {
-  content: 'TC';
-  position: absolute;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 280px;
-  color: rgba(0,0,0,0.06);
-  line-height: 1;
-  bottom: -20px;
-  right: -20px;
-  letter-spacing: -0.05em;
-}
 
-.hero-stat {
-  margin-bottom: 36px;
-}
-.hero-stat-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 64px;
-  color: var(--black);
-  line-height: 1;
-  letter-spacing: 0.02em;
-}
-.hero-stat-label {
-  font-size: 12px;
-  color: var(--black);
-  opacity: 0.55;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-top: 4px;
-}
 
-.hero-divider {
-  width: 40px;
-  height: 1px;
-  background: rgba(0,0,0,0.2);
-  margin: 8px 0 36px;
-}
 
-.hero-badges {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.hero-badge {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 12px;
-  color: var(--black);
-  opacity: 0.7;
-}
-.hero-badge-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--black);
-  opacity: 0.4;
-  flex-shrink: 0;
-}
+
+
+
+
+
+
+
+
+
 
 /* ── ABOUT ── */
 #about {
@@ -393,10 +339,6 @@ section { position: relative; z-index: 2; }
 }
 
 .services-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: end;
   margin-bottom: 64px;
 }
 
@@ -712,7 +654,7 @@ footer {
   nav { padding: 18px 24px; }
   .nav-links { display: none; }
   #hero { grid-template-columns: 1fr; }
-  .hero-right { display: none; }
+  
   .hero-left { padding: 100px 24px 80px; }
   #about { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
   #services { padding: 80px 24px; }
@@ -759,35 +701,7 @@ footer {
       <a href="https://app.reclaim.ai/m/taneil-currie/quick-meeting" target="_blank" class="btn-primary">Book a Call</a>
       <a href="#about" class="btn-ghost">Learn more</a>
     </div>
-  </div>
-
-  <div class="hero-right">
-    <div class="hero-stat reveal">
-      <div class="hero-stat-num">20+</div>
-      <div class="hero-stat-label">Years of operator experience</div>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-stat reveal reveal-delay-1">
-      <div class="hero-stat-num">2</div>
-      <div class="hero-stat-label">Companies built and sold</div>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-badges reveal reveal-delay-2">
-      <div class="hero-badge">
-        <div class="hero-badge-dot"></div>
-        Forbes Agency Council Member
-      </div>
-      <div class="hero-badge">
-        <div class="hero-badge-dot"></div>
-        SaaS, ecommerce and luxury brand marketing
-      </div>
-      <div class="hero-badge">
-        <div class="hero-badge-dot"></div>
-        Early-stage to enterprise
-      </div>
-    </div>
-  </div>
-</section>
+  </div></section>
 
 <!-- ABOUT -->
 <section id="about">
@@ -847,7 +761,7 @@ footer {
         <span class="accent">FOCUS.</span>
       </h2>
     </div>
-    <p class="services-intro reveal">Every business is different. But the problems that slow them down tend to look a lot alike. Here is where I can help.</p>
+
   </div>
 
   <div class="services-grid">
