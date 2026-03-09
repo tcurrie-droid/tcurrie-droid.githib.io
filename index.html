@@ -29,10 +29,10 @@
   }
 
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     padding: 20px 56px;
     display: flex; justify-content: space-between; align-items: center;
-    background: rgba(250,248,245,0.9);
+    background: rgba(250,248,245,0.95);
     backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--grey-lt);
   }
@@ -52,6 +52,7 @@
     transition: background 0.2s, color 0.2s !important;
   }
   .nav-cta:hover { background: var(--indigo) !important; color: #fff !important; }
+  .hamburger { display: none; }
 
   .section { padding: 100px 56px; position: relative; overflow: hidden; }
   .section-narrow { max-width: 1100px; }
@@ -60,7 +61,7 @@
   .hero {
     min-height: 100vh; padding: 130px 56px 80px;
     display: grid; grid-template-columns: 1fr 440px;
-    gap: 40px; align-items: center; position: relative; overflow: hidden;
+    gap: 40px; align-items: center; position: relative;
   }
   .hero-tag {
     font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
@@ -77,6 +78,7 @@
   .hero-sub {
     font-size: 18px; line-height: 1.72; color: var(--grey);
     max-width: 480px; margin-bottom: 44px; font-weight: 300;
+    overflow-wrap: break-word; word-wrap: break-word;
   }
   .btn {
     display: inline-block; padding: 15px 38px; background: var(--indigo); color: #fff;
@@ -178,46 +180,68 @@
   @keyframes marquee { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
   .hero-text { animation: fadeUp 0.9s ease both; }
 
+  .hamburger { display: none; }
+
   @media (max-width: 900px) {
-    nav { padding: 18px 24px; }
-    .nav-links { display: none; flex-direction: column; gap: 0; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg); padding: 90px 40px 40px; z-index: 99; }
+    /* Nav */
+    nav { padding: 18px 24px; flex-wrap: wrap; gap: 0; }
+    .nav-links {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      background: var(--bg);
+      border-top: 1px solid var(--grey-lt);
+      margin: 18px -24px -18px;
+      padding: 0 24px 16px;
+    }
     .nav-links.open { display: flex; }
     .nav-links li { border-bottom: 1px solid var(--grey-lt); }
-    .nav-links li a { display: block; padding: 20px 0; font-size: 22px; font-weight: 500; }
-    .nav-links li a.nav-cta { background: none; border: none; color: var(--mauve); padding: 20px 0; border-radius: 0; }
-    .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; z-index: 100; background: none; border: none; padding: 4px; }
+    .nav-links li:last-child { border-bottom: none; }
+    .nav-links li a { display: block; padding: 18px 0; font-size: 16px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); }
+    .nav-links li a.nav-cta { background: none; border: none; color: var(--mauve); border-radius: 0; padding: 18px 0; }
+    .hamburger {
+      display: flex !important; flex-direction: column; justify-content: center; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 6px; margin-left: auto;
+    }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); border-radius: 2px; transition: all 0.25s ease; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .hero { grid-template-columns: 1fr; padding: 120px 24px 60px; }
+    /* Hero */
+    .hero { grid-template-columns: 1fr; padding: 110px 24px 60px; }
+    .hero-text { min-width: 0; width: 100%; }
     .hero-shapes { display: none; }
+    .hero-sub { font-size: 16px !important; max-width: 100% !important; }
+    /* Sections */
     .section { padding: 72px 24px; }
+    .section-narrow { width: 100%; max-width: 100%; }
+    /* Problem */
     .problem-grid { grid-template-columns: 1fr; }
     .prob-shapes { display: none; }
+    /* Philosophy */
     .beliefs { grid-template-columns: 1fr; gap: 32px; }
+    /* Who this is for */
     .for-grid { grid-template-columns: 1fr; gap: 40px; }
     .for-shapes { display: none; }
+    /* About */
     .who-grid { grid-template-columns: 1fr; gap: 40px; }
     .who-shapes { display: none; }
+    .who-headline { font-size: clamp(26px, 6vw, 34px) !important; }
+    /* How I help */
     .work-item { grid-template-columns: 1fr; }
     .work-item > svg { display: none; }
-    .contact-wrap { padding: 80px 24px; }
-    .contact-accent { display: none; }
-    .divider { padding: 0 24px; }
-    footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
-  }
-  .hamburger { display: none; }
-
-  @media (max-width: 900px) {
-    .hamburger { display: flex !important; }
+    /* Services */
     .services-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+    /* Testimonials */
     .testimonials-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
-    .who-headline { font-size: clamp(26px, 6vw, 34px) !important; }
+    /* Contact */
+    .contact-wrap { padding: 80px 24px; }
     .contact-headline { font-size: clamp(28px, 7vw, 40px) !important; }
-    .hero-sub { font-size: 16px !important; max-width: 100% !important; }
-    .section-narrow { width: 100%; max-width: 100%; }
-    .footer-social { margin-top: 4px; }
+    .contact-accent { display: none; }
+    /* Footer */
+    .divider { padding: 0 24px; }
+    footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+    .footer-social { margin-top: 0; }
     footer > div:last-child { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
 </style>
@@ -226,27 +250,27 @@
 
 <nav>
   <a class="nav-logo" href="#">Taneil Currie</a>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
   <ul class="nav-links" id="nav-links">
     <li><a href="#work" class="nav-close">Work</a></li>
     <li><a href="#about" class="nav-close">About</a></li>
     <li><a href="#contact" class="nav-cta nav-close">Let's talk</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <script>
-  const btn = document.getElementById('hamburger');
-  const nav = document.getElementById('nav-links');
-  btn.addEventListener('click', () => {
-    btn.classList.toggle('open');
-    nav.classList.toggle('open');
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
   });
   document.querySelectorAll('.nav-close').forEach(link => {
     link.addEventListener('click', () => {
-      btn.classList.remove('open');
-      nav.classList.remove('open');
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
     });
   });
 </script>
