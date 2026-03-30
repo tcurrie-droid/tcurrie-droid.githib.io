@@ -17,7 +17,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog -->
+  <!-- Blog homepage -->
   <url>
     <loc>https://blog.taneilcurrie.com/</loc>
     <lastmod>2026-03-27</lastmod>
@@ -32,5 +32,50 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Blog Posts -->
+  <url><loc>https://blog.taneilcurrie.com/p/how-i-turned-sales-follow-up-emails-into-a-content-goldmine</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/marketing-when-every-dollar-matters-a-bootstrapped-growth-playbook</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/why-chatgpt-caught-my-attention-so-quickly</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/trying-midjourney-for-the-first-time</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/the-art-of-manual-lead-scoring-building-intelligence-into-hubspot</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/trying-google-bard-and-wondering-where-it-fits</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/why-blog-content-still-matters</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/why-adobe-firefly-caught-my-attention</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/testing-out-chatgpt-voice</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/the-plg-paradox-why-you-need-structure-before-strategy</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/the-ai-agent-advantage-why-today-s-e-commerce-entrepreneurs-have-superpowers-we-didn-t</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/why-i-started-building-an-ai-tool-directory</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/what-happens-when-ai-meets-visual-storytelling</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/what-happens-when-ai-meets-the-things-we-love-most</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/the-death-of-content-marketing-funnels</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/the-hidden-cost-of-no-ai-policy</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/the-tools-got-better-the-outreach-got-worse</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/more-ai-tools-will-not-automatically-make-you-more-efficient</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/starting-a-brand-from-zero-what-ai-actually-makes-possible-now</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/most-teams-are-using-ai-all-wrong</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/one-ai-tool-for-the-whole-company-sounds-efficient-it-may-not-be</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/when-the-website-key-is-gone-you-need-another-way-in</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/how-to-choose-the-right-ai-seo-tool-for-the-way-you-actually-work</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/aeo-is-not-new-it-is-seo-with-a-new-spotlight</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/your-mobile-web-experience-is-why-your-conversion-rates-are-low</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/why-the-best-marketing-doesn-t-feel-like-marketing-lessons-from-lincoln-continental</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/your-website-might-be-organized-like-an-overstuffed-pantry</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/your-team-isn-t-lazy-your-instructions-are-just-bad</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/why-your-best-sales-reps-will-love-ai-prospecting</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/meetings-about-meetings-the-productivity-death-spiral</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/what-smaller-clients-can-teach-you-that-enterprise-clients-often-cannot</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/when-storytelling-beats-roi</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/from-hockey-mom-to-seven-figure-exit-how-one-t-shirt-became-a-business</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/your-company-probably-has-a-knowledge-problem</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/why-your-best-informed-prospects-are-your-hardest-to-convert</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/why-clickup-s-viral-tiktok-strategy-should-terrify-every-b2b-marketer</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/what-hockey-taught-me-about-building-teams-that-actually-work</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/why-linkedin-ads-drain-budgets-and-the-audit-process-that-changes-that</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/ai-fluency-is-not-just-for-individuals-it-is-a-leadership-skill</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/how-b2b-technical-buyers-will-use-ai-differently</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/how-to-use-reddit-s-api-ai-to-find-your-exact-ad-audience-before-you-spend-a-dollar</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/when-ai-overviews-turn-your-comments-into-front-page-news</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://blog.taneilcurrie.com/p/most-a-b-tests-fail-that-s-the-point</loc><lastmod>2026-03-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
 </urlset>
